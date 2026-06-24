@@ -9,9 +9,13 @@ class UserCreate(UserBase):
     password: str
 
 
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
 class UserResponse(UserBase):
     id: int
     role: str
 
-    # Режим совместимости с ORM
     model_config = ConfigDict(from_attributes=True)

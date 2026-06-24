@@ -5,9 +5,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
 
-# Чтобы не ловить ошибки от линтера
 if TYPE_CHECKING:
-    from app.models.booking import Booking
+    from app.models.bookings import Booking
 
 
 class Room(Base):
@@ -16,7 +15,7 @@ class Room(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     name: Mapped[str] = mapped_column(
         String, unique=True, index=True, nullable=False
-        )
+    )
 
     bookings: Mapped[list["Booking"]] = relationship(
         "Booking",
